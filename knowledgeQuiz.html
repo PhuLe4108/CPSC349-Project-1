@@ -30,7 +30,7 @@
     <title>Quiz app</title>
   </head>
   <body>
-    <h1>Anime quiz</h1>
+    <h1>General knowledge quiz</h1>
     <p id="question">None</p>
     <button onclick="checkAnswer(this);">None</button>
     <button onclick="checkAnswer(this);">None</button>
@@ -41,32 +41,37 @@
 
     <script>
       var questions = [
-{
-    question: "In the anime Naruto, what is the name of Naruto's sensei?",
-    answers: ["Kakashi Hatake", "Jiraiya", "Orochimaru", "Tsunade"],
-    correctAnswer: 0 // Kakashi Hatake
-  },
-  {
-    question: "Which anime features a group of students trying to assassinate their teacher, who is a powerful octopus-like creature?",
-    answers: ["Attack on Titan", "Assassination Classroom", "Death Note", "One Punch Man"],
-    correctAnswer: 1 // Assassination Classroom
-  },
-  {
-    question: "What is the name of the protagonist in 'Dragon Ball Z'?",
-    answers: ["Goku", "Vegeta", "Gohan", "Piccolo"],
-    correctAnswer: 0 // Goku
-  },
-  {
-    question: "In My Hero Academia, what is the name of the main character who inherits the quirk One For All?",
-    answers: ["Izuku Midoriya", "Katsuki Bakugo", "Shoto Todoroki", "All Might"],
-    correctAnswer: 0 // Izuku Midoriya
-  },
-  {
-    question: "Which anime follows the story of two brothers searching for the Philosopher's Stone to restore their bodies after a failed alchemy experiment?",
-    answers: ["Fullmetal Alchemist", "Naruto", "Bleach", "Cowboy Bebop"],
-    correctAnswer: 0 // Fullmetal Alchemist
-  }];
-
+        {
+          question: "What is the capital of Australia?",
+          answers: ["Sydney", "Canberra", "Melbourne", "Brisbane"],
+          correctAnswer: 1,
+        },
+        {
+          question: "Who wrote the famous play Romeo and Juliet?",
+          answers: ["William Shakespeare", "Charles Dickens", "Jane Austen", "Mark Twain"],
+          correctAnswer: 0,
+        },
+        {
+          question: "What is the largest mammal in the world?",
+          answers: ["Elephant", "Blue whale", "Giraffe", "Hippopotamus"],
+          correctAnswer: 1,
+        },
+        {
+          question: "What is the chemical symbol for gold?",
+          answers: ["Au", "Ag", "Fe", "Cu"],
+          correctAnswer: 0,
+        },
+        {
+          question: "What is the currency of Japan?",
+          answers: ["Yen", "Dollar", "Euro", "Pound"],
+          correctAnswer: 0,
+        },
+        {
+          question: "What is the powerhouse of the cell?",
+          answers: ["Nucleus", "Mitochondria", "Ribosome", "Endoplasmic reticulum"],
+          correctAnswer: 1,
+        },
+      ];
       var currentQuestionIndex = 0;
       var score = 0
       var buttons = document.getElementsByTagName("button");

@@ -23,8 +23,8 @@
                         <button class="btn btn-light btn-outline-secondary" id="home-button" type="button" onclick="homeButtonClicked()">Home</button>
                         <button id="quiz-button" class="btn btn-light btn-outline-secondary dropdown dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">List of quizzes</button>
                         <ul class="dropdown-menu">
-                            <li class="dropdown-item">Anime Quiz</li>
-                            <li class="dropdown-item">Quiz 2</li>
+                            <li class="dropdown-item">Anime quiz</li>
+                            <li class="dropdown-item">General knowledge quiz</li>
                             <li class="dropdown-item">Quiz 3</li>
                         </ul>
                     </div>
@@ -53,12 +53,16 @@
             <label>Quizzes: <span class="text-success fw-bold">Green</span> = Correct, <span class="text-danger fw-bold">Red</span> = Incorrect</label>
         </br>
             <ul>
-                <li>Anime Quiz</li>
-                <button class="btn btn-outline-primary" type="button" onclick="takeQuiz(this)">Take quiz</button>
+                <li>Anime quiz</li>
+                <button class="btn btn-outline-primary" type="button" onclick="takeAnimeQuiz(this)">Take quiz</button>
                 <div id="anime-quiz" class="ratio border border-black border-1 iframe-container" style="--bs-aspect-ratio: 25%;">
                     <iframe src="animeQuiz.html" width="600" height="400"></iframe>
                 </div>
-                <li>Quiz 2</li>
+                <li>General knowledge quiz</li>
+                <button class="btn btn-outline-primary" type="button" onclick="takeKnowledgeQuiz(this)">Take quiz</button>
+                <div id="knowledge-quiz" class="ratio border border-black border-1 iframe-container" style="--bs-aspect-ratio: 25%;">
+                    <iframe src="knowledgeQuiz.html" width="600" height="400"></iframe>
+                </div>
                 <li>Quiz 3</li>
             </ul>
         </div>
@@ -69,8 +73,14 @@
             location.reload()
         }
 
-        function takeQuiz(button) {
+        function takeAnimeQuiz(button) {
             let div = document.getElementById("anime-quiz")
+            div.style.display = "block"
+            button.style.display = "none"
+        }
+
+        function takeKnowledgeQuiz(button) {
+            let div = document.getElementById("knowledge-quiz")
             div.style.display = "block"
             button.style.display = "none"
         }
