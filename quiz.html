@@ -30,13 +30,21 @@
     </style>
   </head>
   <body>
-    <h1>Quiz App</h1>
+    <h1>Quiz Two</h1>
     <p id="question">Question 1: What is the capital of Australia?</p>
     <button onclick="checkAnswer(this);">Sydney</button>
     <button onclick="checkAnswer(this);">Canberra</button>
     <button onclick="checkAnswer(this);">Melbourne</button>
     <button onclick="checkAnswer(this);">Brisbane</button>
-
+    <br />
+    <button
+      class="btn btn-light btn-outline-secondary"
+      id="quiz-button"
+      type="submit"
+      onclick="location.href='quiz3.html'"
+    >
+      Next Quiz
+    </button>
     <script>
       var questions = [
         {
@@ -107,16 +115,6 @@
         ) {
           button.style.backgroundColor = "#4caf50";
           button.textContent = "Correct!";
-          currentQuestionIndex++;
-          if (currentQuestionIndex < questions.length) {
-            displayQuestion();
-          } else {
-            document.getElementById("question").textContent = "Quiz Completed!";
-            var buttons = document.getElementsByTagName("button");
-            for (var i = 0; i < buttons.length; i++) {
-              buttons[i].disabled = true;
-            }
-          }
         } else {
           button.style.backgroundColor = "#f44336";
           var correctButton =
@@ -125,13 +123,27 @@
             ];
           correctButton.style.backgroundColor = "#4caf50";
           correctButton.textContent = "Correct!";
+        }
+
+        // Increment to the next question
+        currentQuestionIndex++;
+
+        // Check if there are more questions
+        if (currentQuestionIndex < questions.length) {
+          // Display the next question
+          displayQuestion();
+        } else {
+          // Quiz completed
+          document.getElementById("question").textContent = "Quiz Completed!";
+          var buttons = document.getElementsByTagName("button");
           for (var i = 0; i < buttons.length; i++) {
             buttons[i].disabled = true;
           }
+
+          // Redirect to quiz3.html when quiz is completed
+          window.location.href = "quiz3.html";
         }
       }
-
-      displayQuestion();
     </script>
   </body>
 </html>

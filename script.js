@@ -4,17 +4,17 @@ function homeButtonClicked() {
   const result = `${content} button clicked`;
   alert(result);
 }
-//Score tracker
+
 function ScoreButtonClicked() {
   let content = document.getElementById("score-button").textContent;
   const result = `${content} button clicked`;
   alert(result);
 }
-
+//
 var quiz1Score;
 var quiz2Score;
 var quiz3Score;
-
+//
 function quiz1Score() {
   quiz1Score = document.getElementById("quiz1Score").value;
   alert("Quiz 1 Score: " + quiz1Score);
