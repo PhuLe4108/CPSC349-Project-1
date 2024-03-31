@@ -12,8 +12,17 @@
     text-align: left;
 }
 
+.inner-container label:nth-child(2) {
+    text-align: right;
+}
+
 .second-container-label {
     margin-top: 30px;
+}
+
+.iframe-container {
+    margin: 0px -30px;
+    display: none;
 }
 
 button[name="home-button"] {

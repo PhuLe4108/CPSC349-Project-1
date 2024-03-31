@@ -1,0 +1,129 @@
+<!-- quiz.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        text-align: center;
+      }
+      h1 {
+        font-size: 2em;
+      }
+      p {
+        font-size: 1em;
+      }
+      button {
+        font-size: 1em;
+        padding: 10px;
+        margin-top: 20px;
+        background-color: #0066eb;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a010;
+      }
+    </style>
+    <title>Quiz app</title>
+  </head>
+  <body>
+    <h1>Anime quiz</h1>
+    <p id="question">None</p>
+    <button onclick="checkAnswer(this);">None</button>
+    <button onclick="checkAnswer(this);">None</button>
+    <button onclick="checkAnswer(this);">None</button>
+    <button onclick="checkAnswer(this);">None</button>
+    <br/>
+    <button id="continue-button" type="button" onclick="nextQuestion(this);">Continue</button>
+
+    <script>
+      var questions = [
+{
+    question: "In the anime Naruto, what is the name of Naruto's sensei?",
+    answers: ["Kakashi Hatake", "Jiraiya", "Orochimaru", "Tsunade"],
+    correctAnswer: 0 // Kakashi Hatake
+  },
+  {
+    question: "Which anime features a group of students trying to assassinate their teacher, who is a powerful octopus-like creature?",
+    answers: ["Attack on Titan", "Assassination Classroom", "Death Note", "One Punch Man"],
+    correctAnswer: 1 // Assassination Classroom
+  },
+  {
+    question: "What is the name of the protagonist in 'Dragon Ball Z'?",
+    answers: ["Goku", "Vegeta", "Gohan", "Piccolo"],
+    correctAnswer: 0 // Goku
+  },
+  {
+    question: "In My Hero Academia, what is the name of the main character who inherits the quirk One For All?",
+    answers: ["Izuku Midoriya", "Katsuki Bakugo", "Shoto Todoroki", "All Might"],
+    correctAnswer: 0 // Izuku Midoriya
+  },
+  {
+    question: "Which anime follows the story of two brothers searching for the Philosopher's Stone to restore their bodies after a failed alchemy experiment?",
+    answers: ["Fullmetal Alchemist", "Naruto", "Bleach", "Cowboy Bebop"],
+    correctAnswer: 0 // Fullmetal Alchemist
+  }];
+
+      var currentQuestionIndex = 0;
+      var score = 0
+      var buttons = document.getElementsByTagName("button");
+      let continue_button = document.getElementById("continue-button")
+
+      function displayQuestion() {
+        var currentQuestion = questions[currentQuestionIndex];
+        document.getElementById("question").textContent = 
+        "Question " + (currentQuestionIndex + 1) + ": " + currentQuestion.question;
+
+        for (var i = 0; i < buttons.length - 1; i++) {
+          buttons[i].textContent = currentQuestion.answers[i];
+          buttons[i].style.backgroundColor = "#0066eb";
+          buttons[i].disabled = false;
+        }
+
+        continue_button.disabled = true
+        continue_button.style.backgroundColor = "gray"
+      }
+
+      function nextQuestion(home_button) {
+        ++currentQuestionIndex;
+        let currentQuestion = questions[currentQuestionIndex]
+        if (currentQuestionIndex < questions.length) {
+            displayQuestion()
+        }
+        //Quiz completed
+        else {
+            document.getElementById("question").textContent = `Quiz Completed! Your score is ${score}`;
+            home_button.textContent = "Back to home"
+            for (var i = 0; i < buttons.length; i++) {
+              buttons[i].style.display = "none"
+            }
+        }
+      }
+
+      function checkAnswer(button) {
+        var currentQuestion = questions[currentQuestionIndex];
+        continue_button.disabled = false
+        continue_button.style.backgroundColor = "#4caf50"
+
+        //If got the correct answer
+        if (button.textContent == currentQuestion.answers[currentQuestion.correctAnswer]) {
+          button.style.backgroundColor = "#4caf50";
+          ++score
+        }
+        // If got the incorrect answer
+        else {
+          button.style.backgroundColor = "#f44336";
+          var correctButton = buttons[currentQuestion.correctAnswer];
+          correctButton.style.backgroundColor = "#4caf50";
+          for (var i = 0; i < buttons.length - 1; i++) {
+            buttons[i].disabled = true;
+          }
+        }
+      }
+      displayQuestion();
+    </script>
+  </body>
+</html>
