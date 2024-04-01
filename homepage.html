@@ -25,7 +25,7 @@
                         <ul class="dropdown-menu">
                             <li class="dropdown-item">Anime quiz</li>
                             <li class="dropdown-item">General knowledge quiz</li>
-                            <li class="dropdown-item">Quiz 3</li>
+                            <li class="dropdown-item">CSS quiz</li>
                         </ul>
                     </div>
                 </div>
@@ -63,7 +63,11 @@
                 <div id="knowledge-quiz" class="ratio border border-black border-1 iframe-container" style="--bs-aspect-ratio: 25%;">
                     <iframe src="knowledgeQuiz.html" width="600" height="400"></iframe>
                 </div>
-                <li>Quiz 3</li>
+                <li>CSS quiz</li>
+                <button class="btn btn-outline-primary" type="button" onclick="takeCSSQuiz(this)">Take quiz</button>
+                <div id="css-quiz" class="ratio border border-black border-1 iframe-container" style="--bs-aspect-ratio: 25%;">
+                    <iframe src="cssQuiz.html" width="600" height="400"></iframe>
+                </div>
             </ul>
         </div>
     </div>
@@ -81,6 +85,12 @@
 
         function takeKnowledgeQuiz(button) {
             let div = document.getElementById("knowledge-quiz")
+            div.style.display = "block"
+            button.style.display = "none"
+        }
+
+        function takeCSSQuiz(button) {
+            let div = document.getElementById("css-quiz")
             div.style.display = "block"
             button.style.display = "none"
         }

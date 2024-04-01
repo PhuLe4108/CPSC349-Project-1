@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        text-align: center;
+      }
+      h1 {
+        font-size: 2em;
+      }
+      p {
+        font-size: 1em;
+      }
+      button {
+        font-size: 1em;
+        padding: 10px;
+        margin-top: 20px;
+        background-color: #0066eb;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a010;
+      }
+    </style>
+    <title>Quiz app</title>
+  </head>
+  <body>
+    <h1>CSS quiz</h1>
+    <p id="question">None</p>
+    <button onclick="checkAnswer(this);"></button>
+    <button onclick="checkAnswer(this);"></button>
+    <button onclick="checkAnswer(this);"></button>
+    <button onclick="checkAnswer(this);"></button>
+    <br/>
+    <button id="continue-button" type="button" onclick="nextQuestion(this);">Continue</button>
+    <script>
+        var questions = [
+            {
+                question: "Which of the following is NOT a valid CSS selector?",
+                answers: [".class", "#id", "*p", "!div"],
+                correctAnswer: 3,
+            },
+            {
+                question: "Which of the following is NOT a valid CSS property?",
+                answers: ["color", "font-size", "text-color", "background-color"],
+                correctAnswer: 2,
+            },
+            {
+                question: "Which of the following is NOT a valid CSS value?",
+                answers: ["red", "12px", "true", "#000000"],
+                correctAnswer: 2,
+            },
+            {
+                question: "How do you add a comment in HTML?",
+                answers: ["<!--This is a comment-->", "//This is a comment", "/*This is a comment*/", "<!--This is a comment"],
+                correctAnswer: 0,
+            },
+            {
+                question: "What is the correct way to include an external JavaScript file?",
+                answers: ["<script src='script.js'></script>", "<script href='script.js'></script>", "<script name='script.js'></script>", "<script link='script.js'></script>"],
+                correctAnswer: 0,
+            },
+            {
+                question: "What does CSS stand for?",
+                answers: ["Cascading Style Sheet", "Computer Style Sheet", "Colorful Style Sheet", "Creative Style Sheet"],
+                correctAnswer: 0,
+            },
+            {
+                question: "What does HTML stand for?",
+                answers: ["Hyper Text Markup Language", "Hyperlinks and Text Markup Language", "Home Tool Markup Language", "Hyper Tool Markup Language"],
+                correctAnswer: 0,
+            },
+            {
+                question: "What does JS stand for?",
+                answers: ["JavaScript", "JavaSuper", "JustScript", "JScript"],
+                correctAnswer: 0,
+            },
+            {
+                question: "Which CSS property is used to change the text color of an element?",
+                answers: ["text-color", "color", "fgcolor", "font-color"],
+                correctAnswer: 1,
+            }  
+        ];
+        var currentQuestionIndex = 0;
+      var score = 0
+      var buttons = document.getElementsByTagName("button");
+      let continue_button = document.getElementById("continue-button")
+
+      function displayQuestion() {
+        var currentQuestion = questions[currentQuestionIndex];
+        document.getElementById("question").textContent = 
+        "Question " + (currentQuestionIndex + 1) + ": " + currentQuestion.question;
+
+        for (var i = 0; i < buttons.length - 1; i++) {
+          buttons[i].textContent = currentQuestion.answers[i];
+          buttons[i].style.backgroundColor = "#0066eb";
+          buttons[i].disabled = false;
+        }
+
+        continue_button.disabled = true
+        continue_button.style.backgroundColor = "gray"
+      }
+
+      function nextQuestion(home_button) {
+        ++currentQuestionIndex;
+        let currentQuestion = questions[currentQuestionIndex]
+        if (currentQuestionIndex < questions.length) {
+            displayQuestion()
+        }
+        //Quiz completed
+        else {
+            document.getElementById("question").textContent = `Quiz Completed! Your score is ${score}`;
+            home_button.textContent = "Back to home"
+            for (var i = 0; i < buttons.length; i++) {
+              buttons[i].style.display = "none"
+            }
+        }
+      }
+
+      function checkAnswer(button) {
+        var currentQuestion = questions[currentQuestionIndex];
+        continue_button.disabled = false
+        continue_button.style.backgroundColor = "#4caf50"
+
+        //If got the correct answer
+        if (button.textContent == currentQuestion.answers[currentQuestion.correctAnswer]) {
+          button.style.backgroundColor = "#4caf50";
+          ++score
+          for (var i = 0; i < buttons.length - 1; i++) {
+            buttons[i].disabled = true
+          }
+        }
+        // If got the incorrect answer
+        else {
+          button.style.backgroundColor = "#f44336";
+          var correctButton = buttons[currentQuestion.correctAnswer];
+          correctButton.style.backgroundColor = "#4caf50";
+          for (var i = 0; i < buttons.length - 1; i++) {
+            buttons[i].disabled = true;
+          }
+        }
+      }
+      displayQuestion();
+    </script>
+  </body>
+</html>
