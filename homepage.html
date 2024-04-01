@@ -24,6 +24,7 @@
                         <button id="quiz-button" class="btn btn-light btn-outline-secondary dropdown dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">List of quizzes</button>
                         <ul class="dropdown-menu">
                             <li class="dropdown-item">Anime quiz</li>
+                            <li class="dropdown-item">Pokémon quiz</li>
                             <li class="dropdown-item">General knowledge quiz</li>
                             <li class="dropdown-item">CSS quiz</li>
                         </ul>
@@ -58,6 +59,11 @@
                 <div id="anime-quiz" class="ratio border border-black border-1 iframe-container" style="--bs-aspect-ratio: 25%;">
                     <iframe src="animeQuiz.html" width="600" height="400"></iframe>
                 </div>
+                <li>Pokémon quiz</li>
+                <button class="btn btn-outline-primary" type="button" onclick="takePokémonQuiz(this)">Take quiz</button>
+                <div id="pokémon-quiz" class="ratio border border-black border-1 iframe-container" style="--bs-aspect-ratio: 25%;">
+                    <iframe src="pokémonQuiz.html" width="600" height="400"></iframe>
+                </div>
                 <li>General knowledge quiz</li>
                 <button class="btn btn-outline-primary" type="button" onclick="takeKnowledgeQuiz(this)">Take quiz</button>
                 <div id="knowledge-quiz" class="ratio border border-black border-1 iframe-container" style="--bs-aspect-ratio: 25%;">
@@ -79,6 +85,12 @@
 
         function takeAnimeQuiz(button) {
             let div = document.getElementById("anime-quiz")
+            div.style.display = "block"
+            button.style.display = "none"
+        }
+
+        function takePokémonQuiz(button) {
+            let div = document.getElementById("pokémon-quiz")
             div.style.display = "block"
             button.style.display = "none"
         }
